@@ -37,12 +37,13 @@ const CheckIcon = () => (
 );
 
 export function CodeBlock({ code }: { code: string }) {
-  const [icon, setIcon] = useState(CopyIcon);
+  // Store JSX elements instead of function references (fixes Issue #6)
+  const [icon, setIcon] = useState<React.ReactNode>(<CopyIcon />);
 
   const copy = async () => {
     await navigator?.clipboard?.writeText(code);
-    setIcon(CheckIcon);
-    setTimeout(() => setIcon(CopyIcon), 2000);
+    setIcon(<CheckIcon />);
+    setTimeout(() => setIcon(<CopyIcon />), 2000);
   };
 
   return (

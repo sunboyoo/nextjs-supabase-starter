@@ -42,11 +42,13 @@ export function SignUpForm({
     }
 
     try {
+      // Extract locale from current path for locale-aware redirects
+      const locale = window.location.pathname.split("/")[1] || "en";
       const { error } = await supabase.auth.signUp({
         email,
         password,
         options: {
-          emailRedirectTo: `${window.location.origin}/protected`,
+          emailRedirectTo: `${window.location.origin}/${locale}/auth/confirm?next=/${locale}/protected`,
         },
       });
       if (error) throw error;

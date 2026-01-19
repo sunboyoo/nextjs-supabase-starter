@@ -9,6 +9,14 @@ export async function GET(request: NextRequest) {
   const type = searchParams.get("type") as EmailOtpType | null;
   const next = searchParams.get("next") ?? "/";
 
+  // Security: Validate next parameter to prevent open redirect attacks
+  // Only allow relative paths starting with "/" (not "//")
+  const safeNext = next.startsWith("/") && !next.startsWith("//") ? next : "/";
+
+  // Extract locale from the current URL path
+  const pathSegments = request.nextUrl.pathname.split("/");
+  const locale = pathSegments[1] || "en";
+
   if (token_hash && type) {
     const supabase = await createClient();
 
@@ -18,13 +26,17 @@ export async function GET(request: NextRequest) {
     });
     if (!error) {
       // redirect user to specified redirect URL or root of app
-      redirect(next);
+      redirect(safeNext);
     } else {
       // redirect the user to an error page with some instructions
-      redirect(`/auth/error?error=${error?.message}`);
+      redirect(
+        `/${locale}/auth/error?error=${encodeURIComponent(error?.message || "Unknown error")}`
+      );
     }
   }
 
   // redirect the user to an error page with some instructions
-  redirect(`/auth/error?error=No token hash or type`);
+  redirect(
+    `/${locale}/auth/error?error=${encodeURIComponent("No token hash or type")}`
+  );
 }

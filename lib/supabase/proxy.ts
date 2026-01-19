@@ -1,6 +1,10 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import { hasEnvVars } from "../utils";
+import { locales } from "@/i18n/routing";
+
+// Build locale pattern dynamically from routing config (fixes Issue #10)
+const localePattern = new RegExp(`^/(${locales.join("|")})(/|$)`);
 
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({
@@ -50,19 +54,26 @@ export async function updateSession(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   // Check if path is a public route (with or without locale prefix)
+  // Locale root pattern: matches /en, /en/, /zh, /zh/ etc.
+  const localeRootPattern = new RegExp(`^/(${locales.join("|")})/?$`);
+
   const isPublicRoute =
     pathname === "/" ||
     pathname.startsWith("/login") ||
     pathname.startsWith("/auth") ||
-    // Also check for locale-prefixed routes (e.g., /en/auth/login, /zh/auth/login)
-    /^\/(en|zh)\/?$/.test(pathname) || // Root with locale
-    /^\/(en|zh)\/auth/.test(pathname) || // Auth routes with locale
-    /^\/(en|zh)\/login/.test(pathname); // Login routes with locale
+    // Locale root paths (e.g., /en, /zh) are public
+    localeRootPattern.test(pathname) ||
+    // Auth and login routes with locale prefix
+    new RegExp(`^/(${locales.join("|")})/auth`).test(pathname) ||
+    new RegExp(`^/(${locales.join("|")})/login`).test(pathname);
 
   if (!user && !isPublicRoute) {
-    // no user, potentially respond by redirecting the user to the login page
+    // no user, redirect to login page with locale prefix (fixes Issue #3)
     const url = request.nextUrl.clone();
-    url.pathname = "/auth/login";
+    // Extract locale from current path, default to first locale
+    const localeMatch = pathname.match(localePattern);
+    const locale = localeMatch ? localeMatch[1] : locales[0];
+    url.pathname = `/${locale}/auth/login`;
     return NextResponse.redirect(url);
   }
 

@@ -44,7 +44,7 @@ export default async function ProtectedPage({ params }: Props) {
       {/* User details section */}
       <section className="flex flex-col gap-3">
         <h2 className="font-bold text-xl">{t("userDetails")}</h2>
-        <pre className="text-xs font-mono p-4 rounded-lg border bg-muted/50 max-h-40 overflow-auto -webkit-overflow-scrolling-touch">
+        <pre className="text-xs font-mono p-4 rounded-lg border bg-muted/50 max-h-40 overflow-auto scroll-container">
           <Suspense fallback={<span>Loading...</span>}>
             <UserDetails locale={locale} />
           </Suspense>

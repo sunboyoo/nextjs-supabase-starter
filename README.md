@@ -1,24 +1,24 @@
-&lt;a href="https://github.com/sunboyoo/nextjs-supabase-starter"&gt;
-  &lt;h1 align="center"&gt;Next.js and Supabase Starter Kit&lt;/h1&gt;
-&lt;/a&gt;
+<a href="https://github.com/sunboyoo/nextjs-supabase-starter">
+  <h1 align="center">Next.js and Supabase Starter Kit</h1>
+</a>
 
-&lt;p align="center"&gt;
+<p align="center">
   The fastest way to build apps with Next.js and Supabase
-&lt;/p&gt;
+</p>
 
-&lt;p align="center"&gt;
-  &lt;a href="#features"&gt;&lt;strong&gt;Features&lt;/strong&gt;&lt;/a&gt; ·
-  &lt;a href="#tech-stack"&gt;&lt;strong&gt;Tech Stack&lt;/strong&gt;&lt;/a&gt; ·
-  &lt;a href="#getting-started"&gt;&lt;strong&gt;Getting Started&lt;/strong&gt;&lt;/a&gt; ·
-  &lt;a href="#project-structure"&gt;&lt;strong&gt;Project Structure&lt;/strong&gt;&lt;/a&gt;
-&lt;/p&gt;
-&lt;br/&gt;
+<p align="center">
+  <a href="#features"><strong>Features</strong></a> ·
+  <a href="#tech-stack"><strong>Tech Stack</strong></a> ·
+  <a href="#getting-started"><strong>Getting Started</strong></a> ·
+  <a href="#project-structure"><strong>Project Structure</strong></a>
+</p>
+<br/>
 
 ## Features
 
 - 🚀 **Next.js 16** with App Router and Turbopack
 - 🔐 **Supabase Auth** with SSR cookie-based authentication
-- 🌍 **Internationalization (i18n)** with next-intl (English &amp; Chinese)
+- 🌍 **Internationalization (i18n)** with next-intl (English & Chinese)
 - 🎨 **TailwindCSS v4** with modern `@theme` syntax
 - 🌙 **Dark Mode** with next-themes
 - 📱 **PWA Ready** with iOS Safari optimizations
@@ -29,7 +29,7 @@
 | Category | Technology |
 |----------|------------|
 | Framework | [Next.js 16](https://nextjs.org) |
-| Database &amp; Auth | [Supabase](https://supabase.com) |
+| Database & Auth | [Supabase](https://supabase.com) |
 | Styling | [TailwindCSS v4](https://tailwindcss.com) |
 | UI Components | [shadcn/ui](https://ui.shadcn.com) |
 | Internationalization | [next-intl](https://next-intl.dev) |
@@ -81,7 +81,7 @@
    NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=[INSERT SUPABASE PROJECT API PUBLISHABLE OR ANON KEY]
    ```
 
-   &gt; **Note:** Both legacy **anon** keys and new **publishable** keys work with this variable name. See the [announcement](https://github.com/orgs/supabase/discussions/29260) for details.
+   > **Note:** Both legacy **anon** keys and new **publishable** keys work with this variable name. See the [announcement](https://github.com/orgs/supabase/discussions/29260) for details.
 
    Find these values in your [Supabase project's API settings](https://supabase.com/dashboard/project/_?showConnect=true).
 

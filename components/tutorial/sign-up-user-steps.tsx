@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Link as I18nLink } from "@/i18n/navigation";
 import { TutorialStep } from "./tutorial-step";
 import { ArrowUpRight } from "lucide-react";
 
@@ -6,7 +7,7 @@ export function SignUpUserSteps() {
   return (
     <ol className="flex flex-col gap-6">
       {process.env.VERCEL_ENV === "preview" ||
-      process.env.VERCEL_ENV === "production" ? (
+        process.env.VERCEL_ENV === "production" ? (
         <TutorialStep title="Set up redirect urls">
           <p>It looks like this App is hosted on Vercel.</p>
           <p className="mt-4">
@@ -76,12 +77,12 @@ export function SignUpUserSteps() {
       <TutorialStep title="Sign up your first user">
         <p>
           Head over to the{" "}
-          <Link
-            href="auth/sign-up"
+          <I18nLink
+            href="/auth/sign-up"
             className="font-bold hover:underline text-foreground/80"
           >
             Sign up
-          </Link>{" "}
+          </I18nLink>{" "}
           page and sign up your first user. It&apos;s okay if this is just you
           for now. Your awesome idea will have plenty of users later!
         </p>

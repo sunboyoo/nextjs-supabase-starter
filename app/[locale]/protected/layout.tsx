@@ -42,7 +42,7 @@ export default async function ProtectedLayout({ children, params }: Props) {
       </nav>
 
       {/* Main content - scrollable area */}
-      <div className="flex-1 w-full overflow-y-auto -webkit-overflow-scrolling-touch">
+      <div className="flex-1 w-full overflow-y-auto scroll-container">
         <div className="w-full max-w-5xl mx-auto p-5">
           {children}
         </div>

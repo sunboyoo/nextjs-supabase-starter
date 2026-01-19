@@ -61,6 +61,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Note: Dynamic locale detection in root layout is not possible in Next.js 16
+  // due to static generation requirements. The locale is properly set in
+  // [locale]/layout.tsx for all locale-prefixed routes.
+  // See Issue #5 in AUDIT_REPORT.md for details.
   return (
     <html lang="en" suppressHydrationWarning>
       <head>

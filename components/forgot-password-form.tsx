@@ -33,8 +33,10 @@ export function ForgotPasswordForm({
     setError(null);
 
     try {
+      // Extract locale from current path for locale-aware redirects
+      const locale = window.location.pathname.split("/")[1] || "en";
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: `${window.location.origin}/auth/update-password`,
+        redirectTo: `${window.location.origin}/${locale}/auth/confirm?next=/${locale}/auth/update-password`,
       });
       if (error) throw error;
       setSuccess(true);
