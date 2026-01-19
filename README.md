@@ -52,6 +52,12 @@
    npx create-next-app -e https://github.com/sunboyoo/nextjs-supabase-starter my-app
    ```
 
+   Or with pnpm:
+
+   ```bash
+   pnpm create next-app -e https://github.com/sunboyoo/nextjs-supabase-starter my-app
+   ```
+
    Or clone directly:
 
    ```bash
