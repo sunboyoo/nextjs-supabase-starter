@@ -1,0 +1,94 @@
+{
+    "HomePage": {
+        "title": "Next.js Supabase Starter",
+        "nextSteps": "Next steps",
+        "poweredBy": "Powered by"
+    },
+    "Auth": {
+        "login": {
+            "title": "Login",
+            "description": "Enter your email below to login to your account",
+            "email": "Email",
+            "password": "Password",
+            "forgotPassword": "Forgot your password?",
+            "submit": "Login",
+            "submitting": "Logging in...",
+            "noAccount": "Don't have an account?",
+            "signUp": "Sign up"
+        },
+        "signUp": {
+            "title": "Sign Up",
+            "description": "Enter your information to create an account",
+            "email": "Email",
+            "password": "Password",
+            "submit": "Sign up",
+            "submitting": "Signing up...",
+            "hasAccount": "Already have an account?",
+            "login": "Login"
+        },
+        "forgotPassword": {
+            "title": "Forgot Password",
+            "description": "Enter your email to reset your password",
+            "email": "Email",
+            "submit": "Send reset link",
+            "submitting": "Sending...",
+            "backToLogin": "Back to login"
+        },
+        "updatePassword": {
+            "title": "Update Password",
+            "description": "Enter your new password",
+            "password": "New Password",
+            "confirmPassword": "Confirm Password",
+            "submit": "Update password",
+            "submitting": "Updating..."
+        },
+        "signUpSuccess": {
+            "title": "Thank you for signing up!",
+            "subtitle": "Check your email to confirm",
+            "message": "You've successfully signed up. Please check your email to confirm your account before signing in."
+        },
+        "error": {
+            "title": "Sorry, something went wrong.",
+            "codeError": "Code error: {error}",
+            "unspecifiedError": "An unspecified error occurred."
+        }
+    },
+    "Protected": {
+        "title": "Protected Page",
+        "info": "This is a protected page that you can only see as an authenticated user",
+        "userDetails": "Your user details",
+        "nextSteps": "Next steps"
+    },
+    "NotFound": {
+        "title": "404 - Page Not Found",
+        "message": "The page you are looking for does not exist."
+    },
+    "Components": {
+        "authButton": {
+            "greeting": "Hey, {email}!",
+            "signIn": "Sign in",
+            "signUp": "Sign up",
+            "logout": "Logout"
+        },
+        "deploy": {
+            "button": "Deploy to Vercel"
+        },
+        "envWarning": {
+            "badge": "Supabase environment variables required",
+            "signIn": "Sign in",
+            "signUp": "Sign up"
+        },
+        "hero": {
+            "srTitle": "Supabase and Next.js Starter Template",
+            "tagline": "The fastest way to build apps with"
+        },
+        "theme": {
+            "light": "Light",
+            "dark": "Dark",
+            "system": "System"
+        },
+        "localeSwitcher": {
+            "label": "Language"
+        }
+    }
+}

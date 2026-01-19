@@ -47,12 +47,19 @@ export async function updateSession(request: NextRequest) {
   const { data } = await supabase.auth.getClaims();
   const user = data?.claims;
 
-  if (
-    request.nextUrl.pathname !== "/" &&
-    !user &&
-    !request.nextUrl.pathname.startsWith("/login") &&
-    !request.nextUrl.pathname.startsWith("/auth")
-  ) {
+  const pathname = request.nextUrl.pathname;
+
+  // Check if path is a public route (with or without locale prefix)
+  const isPublicRoute =
+    pathname === "/" ||
+    pathname.startsWith("/login") ||
+    pathname.startsWith("/auth") ||
+    // Also check for locale-prefixed routes (e.g., /en/auth/login, /zh/auth/login)
+    /^\/(en|zh)\/?$/.test(pathname) || // Root with locale
+    /^\/(en|zh)\/auth/.test(pathname) || // Auth routes with locale
+    /^\/(en|zh)\/login/.test(pathname); // Login routes with locale
+
+  if (!user && !isPublicRoute) {
     // no user, potentially respond by redirecting the user to the login page
     const url = request.nextUrl.clone();
     url.pathname = "/auth/login";

@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { getTranslations } from "next-intl/server";
 
-export function DeployButton() {
+export async function DeployButton() {
+  const t = await getTranslations("Components.deploy");
+
   return (
     <>
       <Link
@@ -17,7 +20,7 @@ export function DeployButton() {
           >
             <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" fill="inherit" />
           </svg>
-          <span>Deploy to Vercel</span>
+          <span>{t("button")}</span>
         </Button>
       </Link>
     </>
